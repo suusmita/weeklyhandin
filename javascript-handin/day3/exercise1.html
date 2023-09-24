@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data</title>
+</head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+
+    header {
+        background-color: #eb8bb5;
+        color: #fff;
+        text-align: center;
+        padding: 20px 0;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        line-height: 1.4;
+    }
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+      /* Style for the container div */
+      .container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border-radius: 10px;
+            text-align: left;
+        }
+
+        /* Style for the answers */
+        .answer {
+            margin-bottom: 20px;
+        }
+</style>
+<body>
+    <header> <h1>Dynamic UI manipulation using data obtained via fetch</h1></header>
+    
+    
+    <label for="userId">Enter User ID (1-10): </label>
+    <input type="number" id="userId" min="1" max="10">
+    <button id="fetchUser">Fetch User</button>
+    <div id="userData"></div>
+
+    <script>
+        const fetchUserButton = document.getElementById("fetchUser");
+        const userIdInput = document.getElementById("userId");
+        const userDataDiv = document.getElementById("userData");
+
+        fetchUserButton.addEventListener("click", () => {
+            const userId = userIdInput.value;
+            const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
+
+            fetch(url)
+                .then((res) => res.json())
+                .then((data) => {
+                    userDataDiv.innerHTML = `
+                        <h2>User Information</h2>
+                        <p>Name: ${data.name}</p>
+                        <p>Email: ${data.email}</p>
+                        <p>Phone: ${data.phone}</p>
+                        <p>Website: ${data.website}</p>
+                    `;
+                });
+        });
+    </script>
+
+<div class="container">
+    <h2>Answers to Questions:</h2>
+    <div class="answer">
+        <h3>What is a promise?</h3>
+        <p>A promise is an object representing the eventual completion or failure of an asynchronous operation. It allows you to handle asynchronous operations more cleanly and synchronously in your code.</p>
+    </div>
+    <div class="answer">
+        <h3>What does the fetch method return?</h3>
+        <p>The fetch method returns a promise that resolves to the Response object representing the response to the request.</p>
+    </div>
+    <div class="answer">
+        <h3>Why do we need to have two .then callbacks with our fetch code?</h3>
+        <p>We use two .then callbacks with fetch code to handle asynchronous data retrieval and manipulation. The first .then callback converts the response to JSON format, and the second .then callback is used to process the data after it's available.</p>
+    </div>
+    <div class="answer">
+        <h3>What can and should you do in the first .then?</h3>
+        <p>In the first .then, you should handle the initial response from the server, which may include checking for errors and converting the response to a usable format, like JSON.</p>
+    </div>
+    <div class="answer">
+        <h3>What can and should you do in the last .then?</h3>
+        <p>In the last .then, you should handle the data that has been successfully retrieved and processed. You can update the DOM or perform any other actions based on the data received from the server.</p>
+    </div>
+</div>
+</body>
+</html>
