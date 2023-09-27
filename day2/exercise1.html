@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Divs</title>
+    <style>
+       header {
+            background-color: #eb8bb5;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+
+        /* Style for the divs */
+        div {
+            width: 100px;
+            margin: 1px;
+            height: 50px; /* Adding height for visibility */
+        }
+
+        /* Add your initial background colors here */
+        #d1 {
+            background-color: #FF5733;
+        }
+
+        #d2 {
+            background-color: #33FF57;
+        }
+
+        #d3 {
+            background-color: #5733FF;
+        }
+
+        /* Style for the button */
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Style for the description box */
+        #description {
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Colorful Divs</h1>
+    </header>
+
+    <div id="d1">&nbsp;</div>
+    <div id="d2">&nbsp;</div>
+    <div id="d3">&nbsp;</div>
+
+    <button id="colorButton">Change Colors</button>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to generate a random color
+            function getRandomColor() {
+                const letters = "0123456789ABCDEF";
+                let color = "#";
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            // Get the div elements by id
+            const div1 = document.getElementById("d1");
+            const div2 = document.getElementById("d2");
+            const div3 = document.getElementById("d3");
+
+            // Initial background colors (as requested)
+            div1.style.backgroundColor = "#FF5733";
+            div2.style.backgroundColor = "#33FF57";
+            div3.style.backgroundColor = "#5733FF";
+
+            // Get the button element
+            const colorButton = document.getElementById("colorButton");
+
+            // Add a click event listener to the button
+            colorButton.addEventListener("click", function () {
+                // Change the background color of each div to a random color
+                div1.style.backgroundColor = getRandomColor();
+                div2.style.backgroundColor = getRandomColor();
+                div3.style.backgroundColor = getRandomColor();
+            });
+        });
+    </script>
+
+    <!-- Description Box -->
+    <div id="description">
+        <h2>Description of Solution</h2>
+        <p>
+            To solve this task, we created an HTML page with three &lt;div&gt; elements, each assigned a unique ID: d1, d2, and d3. These &lt;div&gt; elements were initially given different background colors as specified in the task.
+        </p>
+        <p>
+            We also added a button with the ID "colorButton" to change the background color of the three &lt;div&gt; elements when clicked.
+        </p>
+        <p>
+            For styling purposes, we defined CSS rules in the &lt;style&gt; section to style the header, &lt;div&gt; elements, and the button. JavaScript was used to add functionality to the button, changing the background colors of the &lt;div&gt; elements to random colors upon clicking.
+        </p>
+    </div>
+</body>
+</html>

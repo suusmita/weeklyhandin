@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercise 2: Event Bubbling and Event Arguments</title>
+    <style>
+   header {
+            background-color: #eb8bb5;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+
+        /* Style for the my-div class */
+        .my-div {
+            width: 25px;
+            height: 25px;
+            background-color: rgb(243, 149, 216);
+            margin: 1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Event Bubbling and event arguments</h1>
+    </header>
+
+    <!-- Div 1 -->
+    <div id="div1" class="my-div">1</div>
+    
+    <!-- Div 2 -->
+    <div id="div2" class="my-div">2</div>
+
+    <!-- (div3 to div12) -->
+    <div id="div3" class="my-div">3</div>
+    <div id="div4" class="my-div">4</div>
+    <div id="div5" class="my-div">5</div>
+    <div id="div6" class="my-div">6</div>
+    <div id="div7" class="my-div">7</div>
+    <div id="div8" class="my-div">8</div>
+    <div id="div9" class="my-div">9</div>
+    <div id="div10" class="my-div">10</div>
+    <div id="div11" class="my-div">11</div>
+    <div id="div12" class="my-div">12</div>
+
+    <!-- Div for event bubbling -->
+    <div id="outer">
+        <!-- Paragraph for output -->
+        <p id="output"></p>
+    </div>
+
+    <script>
+        // Add a click handler to the outer div to handle event bubbling
+        const outerDiv = document.getElementById("outer");
+        const outputParagraph = document.getElementById("output");
+
+        outerDiv.addEventListener("click", function (e) {
+            const target = e.target;
+            if (target && target.matches(".my-div")) {
+                const divId = target.id;
+                outputParagraph.innerText = `Hi from ${divId}`;
+            }
+        });
+    </script>
+</body>
+</html>
